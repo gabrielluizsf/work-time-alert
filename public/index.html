@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Work Time Alert</title>
+        <style id="dynamic-style">
+            .spinner {
+                width: 50px;
+                height: 50px;
+                border: 6px solid #ddd;
+                border-top: 6px solid #3498db;
+                border-radius: 50%;
+                animation: spin 1s linear infinite;
+                margin: auto;
+            }
+
+            #loader {
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+
+            @keyframes spin {
+                0% {
+                    transform: rotate(0deg);
+                }
+                100% {
+                    transform: rotate(360deg);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div id="loader">
+            <div class="spinner"></div>
+        </div>
+
+        <div class="container" id="pt-br-content" style="display: none">
+            <h1>Alerta de Hora de Trabalhar</h1>
+
+            <div class="input-group">
+                <label for="work-time">Defina o horário para trabalhar:</label>
+                <input type="time" id="work-time" required>
+            </div>
+
+            <button id="start-btn">Iniciar Contador</button>
+            <button id="stop-btn" disabled>Parar Contador</button>
+
+            <div class="timer-display" id="timer">
+                Defina um horário e clique em "Iniciar Contador"
+            </div>
+
+            <div class="alert" id="alert">
+                HORA DE TRABALHAR!
+            </div>
+
+            <div class="current-time" id="current-time"></div>
+        </div>
+
+        <div class="container" id="en-us-content" style="display: none">
+            <h1>Work Time Alert</h1>
+
+            <div class="input-group">
+                <label for="work-time-en">Set your work time:</label>
+                <input type="time" id="work-time-en" required>
+            </div>
+
+            <button id="start-btn-en">Start Timer</button>
+            <button id="stop-btn-en" disabled>Stop Timer</button>
+
+            <div class="timer-display" id="timer-en">
+                Set a time and click "Start Timer"
+            </div>
+
+            <div class="alert" id="alert-en">
+                TIME TO WORK!
+            </div>
+
+            <div class="current-time" id="current-time-en"></div>
+        </div>
+
+        <script>
+            async function getFileContent(url) {
+                const response = await fetch(url);
+                if (!response.ok) {
+                    throw new Error(`Failed to load: ${url}`);
+                }
+                return await response.text();
+            }
+
+            async function loadScript(url) {
+                const scriptText = await getFileContent(url);
+                const script = document.createElement("script");
+                script.textContent = scriptText;
+                document.body.appendChild(script);
+            }
+
+            async function loadCSS(url) {
+                const cssText = await getFileContent(url);
+                document.getElementById("dynamic-style")
+                    .textContent = cssText;
+            }
+
+            async function loadPage() {
+                try {
+                    await Promise.all([
+                        loadCSS("/css/style.css"),
+                        loadScript("/js/languageDetector.js"),
+                        loadScript("/js/setupTimer.js"),
+                    ]);
+
+                    const language = detectLanguage?.() || "pt";
+
+                    document.getElementById("pt-br-content")
+                        .style.display = language === "pt"
+                            ? "block"
+                            : "none";
+                    document.getElementById("en-us-content")
+                        .style.display = language === "pt"
+                            ? "none"
+                            : "block";
+
+                    setupTimer("pt");
+                    setupTimer("en");
+                } catch (e) {
+                    console.error("Erro:", e);
+                    document.getElementById("pt-br-content")
+                        .style.display = "block";
+                    document.getElementById("en-us-content")
+                        .style.display = "none";
+                } finally {
+                    document.getElementById("loader").style
+                        .display = "none";
+                }
+            }
+
+            document.addEventListener(
+                "DOMContentLoaded",
+                loadPage,
+            );
+        </script>
+    </body>
+</html>
