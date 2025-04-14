@@ -87,7 +87,7 @@ function setupTimer(language) {
 
         const hours = Math.floor(diff / hour);
         const minutes = Math.floor((diff % hour) / minute);
-        const seconds = Math.floor((diff % hour) / second);
+        const seconds = Math.floor((diff % minute) / second);
 
         timerDisplay.textContent = lang === defaultLanguage
             ? `Tempo restante: ${hours}h ${minutes}m ${seconds}s`
