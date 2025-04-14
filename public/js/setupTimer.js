@@ -29,13 +29,12 @@ function setupTimer(language) {
         }
 
         const [hours, minutes] = workTimeInput.value.split(":").map(Number);
-        const now = new Date();
-        targetTime = now;
+        targetTime = now();
 
-        const chosenTime = new Date();
+        const chosenTime = now();
         chosenTime.setHours(hours, minutes, 0, 0);
         
-        if (chosenTime <= now) {
+        if (chosenTime <= now()) {
             alertInvalidTime();
             return;
         }
@@ -49,6 +48,10 @@ function setupTimer(language) {
 
         updateCountdown(lang);
         countdownInterval = setInterval(() => updateCountdown(lang), 1000);
+    }
+
+    function now() {
+        return new Date();
     }
 
     function stopCountdown(lang) {
@@ -66,8 +69,7 @@ function setupTimer(language) {
     }
 
     function updateCountdown(lang) {
-        const now = new Date();
-        const diff = targetTime - now;
+        const diff = targetTime - now();
 
         if (diff <= 0) {
             timerDisplay.textContent = lang === defaultLanguage
@@ -90,10 +92,10 @@ function setupTimer(language) {
     }
 
     function updateCurrentTime(element, lang) {
-        const now = new Date();
-        const hours = now.getHours().toString().padStart(2, "0");
-        const minutes = now.getMinutes().toString().padStart(2, "0");
-        const seconds = now.getSeconds().toString().padStart(2, "0");
+        const date = now();
+        const hours = date.getHours().toString().padStart(2, "0");
+        const minutes = date.getMinutes().toString().padStart(2, "0");
+        const seconds = date.getSeconds().toString().padStart(2, "0");
         element.textContent = lang === defaultLanguage
             ? `Horário atual: ${hours}:${minutes}:${seconds}`
             : `Current time: ${hours}:${minutes}:${seconds}`;
