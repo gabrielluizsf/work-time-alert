@@ -17,29 +17,29 @@ function setupTimer(language) {
     stopBtn.addEventListener("click", () => stopCountdown(language));
 
     function startCountdown(lang) {
+        const alertInvalidTime = ()=> alert(
+            lang === "pt"
+                ? "Por favor, defina um horário válido"
+                : "Please set a valid time",
+        );
         if (!workTimeInput.value) {
-            alert(
-                lang === "pt"
-                    ? "Por favor, defina um horário válido"
-                    : "Please set a valid time",
-            );
+            alertInvalidTime();
             return;
         }
 
         const [hours, minutes] = workTimeInput.value.split(":").map(Number);
         const now = new Date();
-        const workTime = hours + minutes;
         targetTime = now;
-        const nowTime = now.getHours() + now.getMinutes();
-        if (workTime < nowTime || workTime == nowTime) {
-            alert(
-                lang === "pt"
-                    ? "Por favor, defina um horário válido"
-                    : "Please set a valid time",
-            );
+
+        const chosenTime = new Date();
+        chosenTime.setHours(hours, minutes, 0, 0);
+        
+        if (chosenTime <= now) {
+            alertInvalidTime();
             return;
         }
-        targetTime.setHours(hours, minutes, 0, 0);
+    
+        targetTime = chosenTime;
 
         startBtn.disabled = true;
         stopBtn.disabled = false;
