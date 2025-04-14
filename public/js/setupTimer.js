@@ -69,6 +69,9 @@ function setupTimer(language) {
     }
 
     function updateCountdown(lang) {
+        const second = 1000;
+        const minute = second * 60;
+        const hour = minute * 60;
         const diff = targetTime - now();
 
         if (diff <= 0) {
@@ -82,9 +85,9 @@ function setupTimer(language) {
             return;
         }
 
-        const hours = Math.floor(diff / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+        const hours = Math.floor(diff / hour);
+        const minutes = Math.floor((diff % hour) / minute);
+        const seconds = Math.floor((diff % hour) / second);
 
         timerDisplay.textContent = lang === defaultLanguage
             ? `Tempo restante: ${hours}h ${minutes}m ${seconds}s`
