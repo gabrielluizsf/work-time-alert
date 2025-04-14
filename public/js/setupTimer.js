@@ -1,5 +1,6 @@
 function setupTimer(language) {
-    const prefix = language === "pt" ? "" : "-en";
+    const defaultLanguage = "pt"
+    const prefix = language === defaultLanguage ? "" : "-en";
     const workTimeInput = document.getElementById(`work-time${prefix}`);
     const startBtn = document.getElementById(`start-btn${prefix}`);
     const stopBtn = document.getElementById(`stop-btn${prefix}`);
@@ -12,13 +13,13 @@ function setupTimer(language) {
 
     setInterval(() => updateCurrentTime(currentTimeDisplay, language), 1000);
     updateCurrentTime(currentTimeDisplay, language);
-
-    startBtn.addEventListener("click", () => startCountdown(language));
-    stopBtn.addEventListener("click", () => stopCountdown(language));
+    const clickEvent = "click"
+    startBtn.addEventListener(clickEvent, () => startCountdown(language));
+    stopBtn.addEventListener(clickEvent, () => stopCountdown(language));
 
     function startCountdown(lang) {
         const alertInvalidTime = ()=> alert(
-            lang === "pt"
+            lang === defaultLanguage
                 ? "Por favor, defina um horário válido"
                 : "Please set a valid time",
         );
@@ -53,10 +54,10 @@ function setupTimer(language) {
     function stopCountdown(lang) {
         clearInterval(countdownInterval);
         countdownInterval = null;
-        timerDisplay.textContent = lang === "pt"
+        timerDisplay.textContent = lang === defaultLanguage
             ? "Contador parado. Defina um novo horário."
             : "Timer stopped. Set a new time.";
-        stopBtn.textContent = lang === "pt" ? "Parar Contador" : "Stop Timer";
+        stopBtn.textContent = lang === defaultLanguage ? "Parar Contador" : "Stop Timer";
         startBtn.disabled = false;
         stopBtn.disabled = true;
         workTimeInput.disabled = false;
@@ -69,10 +70,10 @@ function setupTimer(language) {
         const diff = targetTime - now;
 
         if (diff <= 0) {
-            timerDisplay.textContent = lang === "pt"
+            timerDisplay.textContent = lang === defaultLanguage
                 ? "Chegou a hora!"
                 : "Time's up!";
-            stopBtn.textContent = lang === "pt" ? "Reiniciar Contador" : "Restart Timer";
+            stopBtn.textContent = lang === defaultLanguage ? "Reiniciar Contador" : "Restart Timer";
             alertDiv.style.display = "block";
             clearInterval(countdownInterval);
             playAlertSound();
@@ -83,7 +84,7 @@ function setupTimer(language) {
         const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
         const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-        timerDisplay.textContent = lang === "pt"
+        timerDisplay.textContent = lang === defaultLanguage
             ? `Tempo restante: ${hours}h ${minutes}m ${seconds}s`
             : `Time remaining: ${hours}h ${minutes}m ${seconds}s`;
     }
@@ -93,7 +94,7 @@ function setupTimer(language) {
         const hours = now.getHours().toString().padStart(2, "0");
         const minutes = now.getMinutes().toString().padStart(2, "0");
         const seconds = now.getSeconds().toString().padStart(2, "0");
-        element.textContent = lang === "pt"
+        element.textContent = lang === defaultLanguage
             ? `Horário atual: ${hours}:${minutes}:${seconds}`
             : `Current time: ${hours}:${minutes}:${seconds}`;
     }
