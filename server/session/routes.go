@@ -4,8 +4,9 @@ import (
 	"crypto/rand"
 	"encoding/hex"
 	"net/http"
-	"work-time-alert/server/logger"
-	"work-time-alert/server/webpush"
+
+	"github.com/gabrielluizsf/work-time-alert/server/logger"
+	"github.com/gabrielluizsf/work-time-alert/server/webpush"
 
 	"github.com/i9si-sistemas/nine"
 	i9 "github.com/i9si-sistemas/nine/pkg/server"
@@ -13,7 +14,7 @@ import (
 
 func Routes(server nine.Server) {
 	logger := logger.New()
-	
+
 	serviceWorker := server.Group("/notifier")
 
 	serviceWorker.Post("/session", func(c *i9.Context) error {
