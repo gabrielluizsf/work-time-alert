@@ -15,8 +15,8 @@ func TestRoutes(t *testing.T) {
 	assert.Equal(t, len(serverSpy.PostCalls), 3)
 	serviceWorkerGroup := serverSpy.GroupCalls[0]
 	assert.Equal(t, "/notifier", serviceWorkerGroup.Prefix)
-	assert.Equal(t, serverSpy.PostCalls[0].Path, "/session")
-	assert.Equal(t, serverSpy.GetCalls[0].Path, "/public")
-	assert.Equal(t, serverSpy.PostCalls[1].Path, "/subscribe")
-	assert.Equal(t, serverSpy.PostCalls[2].Path, "/notify")
+	assert.Equal(t, serverSpy.PostCalls[0].Path, "/notifier/session")
+	assert.Equal(t, serverSpy.GetCalls[0].Path, "/notifier/public")
+	assert.Equal(t, serverSpy.PostCalls[1].Path, "/notifier/subscribe")
+	assert.Equal(t, serverSpy.PostCalls[2].Path, "/notifier/notify")
 }
