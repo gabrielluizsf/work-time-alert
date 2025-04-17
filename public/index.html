@@ -109,8 +109,16 @@
                         loadCSS("/css/style.css"),
                         loadScript("/js/languageDetector.js"),
                         loadScript("/js/setupTimer.js"),
+                        loadScript("/js/session.js"),
                     ]);
 
+                    let sessionId = null;
+                    if (!sessionId) {
+                        const sessions = []
+                        await initSession(sessions);
+                        sessionId = sessions[0];
+                    }
+                    registerServiceWorker(sessionId);
                     const language = detectLanguage?.() || "pt";
 
                     document.getElementById("pt-br-content")
@@ -122,8 +130,8 @@
                             ? "none"
                             : "block";
 
-                    setupTimer("pt");
-                    setupTimer("en");
+                    setupTimer("pt", sessionId);
+                    setupTimer("en", sessionId);
                 } catch (e) {
                     console.error("Erro:", e);
                     document.getElementById("pt-br-content")
