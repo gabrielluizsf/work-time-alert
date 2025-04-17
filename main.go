@@ -3,8 +3,9 @@ package main
 import (
 	"log"
 	"os"
-	"work-time-alert/server/logger"
-	"work-time-alert/server/session"
+
+	"github.com/gabrielluizsf/work-time-alert/server/logger"
+	"github.com/gabrielluizsf/work-time-alert/server/session"
 
 	"github.com/i9si-sistemas/nine"
 	i9 "github.com/i9si-sistemas/nine/pkg/server"
