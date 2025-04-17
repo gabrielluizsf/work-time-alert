@@ -2,15 +2,16 @@ package session
 
 import (
 	"errors"
-	"work-time-alert/server"
+
+	server "github.com/gabrielluizsf/work-time-alert/server"
 
 	"github.com/i9si-sistemas/nine"
 	webpush "github.com/i9si-sistemas/web-push"
 )
 
 var (
-	Manager = manager{}
-    ErrNotFound = errors.New("session not found")
+	Manager     = manager{}
+	ErrNotFound = errors.New("session not found")
 )
 
 type manager nine.GenericJSON[string, *Subscription]
@@ -46,7 +47,6 @@ func (m manager) Register(
 	m[subscription.SenderId] = &subscription
 }
 
-
 func (m manager) Update(id string, sub Sub) error {
 	data, err := m.Get(id)
 	if err != nil {
@@ -55,7 +55,6 @@ func (m manager) Update(id string, sub Sub) error {
 	data.Subscription = sub
 	return nil
 }
-
 
 func (m manager) Find(
 	id string,
