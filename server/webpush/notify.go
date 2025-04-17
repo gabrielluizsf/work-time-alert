@@ -2,7 +2,8 @@ package webpush
 
 import (
 	"encoding/json"
-	"work-time-alert/server"
+
+	server "github.com/gabrielluizsf/work-time-alert/server"
 
 	webpush "github.com/i9si-sistemas/web-push"
 )
