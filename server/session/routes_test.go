@@ -9,7 +9,7 @@ import (
 
 func TestRoutes(t *testing.T) {
 	serverSpy := spy.NewServer()
-	Routes(serverSpy)
+	Routes(serverSpy, spy.NewLogger())
 	assert.Equal(t, len(serverSpy.GroupCalls), 1)
 	assert.Equal(t, len(serverSpy.GetCalls), 1)
 	assert.Equal(t, len(serverSpy.PostCalls), 3)

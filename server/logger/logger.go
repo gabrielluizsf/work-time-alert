@@ -8,20 +8,18 @@ type Request interface {
 	IPs() []string
 }
 
-type logger struct {
-	Request func(req Request, data ...any)
-	Data func(data ...any)
+type logger struct {}
+
+func (l logger) Request(req Request, data ...any) {
+	logRequest(req, data...)
+}
+
+func (l logger) Data(data ...any){
+	log.Printf("data=%v", data)
 }
 
 func New() logger {
-	return logger{
-		Request: func(req Request, data ...any) {
-			logRequest(req, data...)
-		},
-		Data: func(data ...any){
-			log.Printf("data=%v", data)
-		},
-	}
+	return logger{}
 }
 
 func logRequest(req Request, data ...any) {

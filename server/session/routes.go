@@ -1,36 +1,18 @@
 package session
 
 import (
-	"crypto/rand"
-	"encoding/hex"
 	"net/http"
 
-	"github.com/gabrielluizsf/work-time-alert/server/logger"
 	"github.com/gabrielluizsf/work-time-alert/server/webpush"
 
 	"github.com/i9si-sistemas/nine"
 	i9 "github.com/i9si-sistemas/nine/pkg/server"
 )
 
-func Routes(server nine.Server) {
-	logger := logger.New()
-
+func Routes(server nine.Server, logger Logger) {
 	serviceWorker := server.Group("/notifier")
 
-	serviceWorker.Post("/session", func(c *i9.Context) error {
-		sessionBytes := make([]byte, 32)
-		_, err := rand.Read(sessionBytes)
-		if err != nil {
-			logger.Data("{status:500}", "{error:"+err.Error()+"}")
-			return c.SendStatus(http.StatusInternalServerError)
-		}
-		sessionId := hex.EncodeToString(sessionBytes)
-		Manager.Register(Subscription{
-			SenderId:     sessionId,
-			Subscription: Sub{},
-		})
-		return c.JSON(nine.JSON{"sessionId": sessionId})
-	})
+	serviceWorker.Post("/session", handler(logger))
 
 	serviceWorker.Get("/public", func(c *i9.Context) error {
 		key := webpush.Keys().PublicKey

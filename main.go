@@ -22,6 +22,6 @@ func main() {
 	server.Get("/hello", func(c *i9.Context) error {
 		return c.Send([]byte("Hello World!"))
 	})
-	session.Routes(server)
+	session.Routes(server, logger)
 	log.Fatal(server.Listen())
 }
