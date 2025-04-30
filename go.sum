@@ -1,13 +1,9 @@
 github.com/golang-jwt/jwt/v5 v5.2.2 h1:Rl4B7itRWVtYIHFrSNd7vhTiz9UpLdi6gZhZ3wEeDy8=
 github.com/golang-jwt/jwt/v5 v5.2.2/go.mod h1:pqrtFR0X4osieyHYxtmOUWsAWrfe1Q5UVIyoH402zdk=
-github.com/i9si-sistemas/assert v0.0.0-20241226143514-2239efdffece h1:dXX3IVWmQl4sRUpBPR0VaD4ev70lbK00a4gt/VZZHIA=
-github.com/i9si-sistemas/assert v0.0.0-20241226143514-2239efdffece/go.mod h1:xRwY4u6NZZjNLlgdBSaNESQEUSJ4CxuT4lWQAbvwfBQ=
-github.com/i9si-sistemas/nine v0.0.0-20250416153343-7067999a14b8 h1:wgT+iPRLv/R0xCNM/WPI3HeX4NQ6KcPqDFpU6jeXuuI=
-github.com/i9si-sistemas/nine v0.0.0-20250416153343-7067999a14b8/go.mod h1:IRW/TkC7ZqmltMkamaGreVlRCadPYHgcluQEJgcaAHs=
-github.com/i9si-sistemas/nine v0.0.0-20250417190747-57ffa6e27835 h1:wYdCb794Giqo54zAMF2uyQbd4BNTyPWdaBuGMTa0shk=
-github.com/i9si-sistemas/nine v0.0.0-20250417190747-57ffa6e27835/go.mod h1:IRW/TkC7ZqmltMkamaGreVlRCadPYHgcluQEJgcaAHs=
-github.com/i9si-sistemas/nine v0.0.0-20250423155537-64efe2cdfd13 h1:wag6N5iQqVtwSH4F3lgPSmNqnBUcKkOFmyuHoMSGZwM=
-github.com/i9si-sistemas/nine v0.0.0-20250423155537-64efe2cdfd13/go.mod h1:IRW/TkC7ZqmltMkamaGreVlRCadPYHgcluQEJgcaAHs=
+github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c h1:8DlRk8oT2YFyo8MbY00ge2wEEGGLZWr2mGJextdSePI=
+github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c/go.mod h1:xRwY4u6NZZjNLlgdBSaNESQEUSJ4CxuT4lWQAbvwfBQ=
+github.com/i9si-sistemas/nine v0.0.0-20250430172703-ed2ecb6b9c71 h1:yIyAEA40c0nxTVmDbU+It7IbTlf4myqfknBy8yhXqwY=
+github.com/i9si-sistemas/nine v0.0.0-20250430172703-ed2ecb6b9c71/go.mod h1:6j/47ihyu5Zz9S4RTIQ939jbbz2Zb9ZYshM7TA6LnT8=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177 h1:HM47tTUUln6ThY0jAL5JMiTvIorY/VUZ8R4r4ytH+T0=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177/go.mod h1:+69cYySJrNKCmOVP9ozfFuyXt3ljzygkyRdnMS73wrk=
 golang.org/x/crypto v0.37.0 h1:kJNSjF/Xp7kU0iB2Z+9viTPMW4EqqsrywMXLJOOsXSE=
