@@ -2,10 +2,10 @@ github.com/golang-jwt/jwt/v5 v5.2.2 h1:Rl4B7itRWVtYIHFrSNd7vhTiz9UpLdi6gZhZ3wEeD
 github.com/golang-jwt/jwt/v5 v5.2.2/go.mod h1:pqrtFR0X4osieyHYxtmOUWsAWrfe1Q5UVIyoH402zdk=
 github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c h1:8DlRk8oT2YFyo8MbY00ge2wEEGGLZWr2mGJextdSePI=
 github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c/go.mod h1:xRwY4u6NZZjNLlgdBSaNESQEUSJ4CxuT4lWQAbvwfBQ=
-github.com/i9si-sistemas/nine v0.0.0-20250430172703-ed2ecb6b9c71 h1:yIyAEA40c0nxTVmDbU+It7IbTlf4myqfknBy8yhXqwY=
-github.com/i9si-sistemas/nine v0.0.0-20250430172703-ed2ecb6b9c71/go.mod h1:6j/47ihyu5Zz9S4RTIQ939jbbz2Zb9ZYshM7TA6LnT8=
-github.com/i9si-sistemas/nine v0.0.0-20250526190116-c0dbd4187bba h1:45G31CStETbz7c662CbNPLoXWlpklptxLsw69HM/6rs=
-github.com/i9si-sistemas/nine v0.0.0-20250526190116-c0dbd4187bba/go.mod h1:6j/47ihyu5Zz9S4RTIQ939jbbz2Zb9ZYshM7TA6LnT8=
+github.com/i9si-sistemas/command v1.0.1 h1:Z8YkJloBaGy6/XQOcSGYFw89ZbbfmXIOAQSo5+KINYM=
+github.com/i9si-sistemas/command v1.0.1/go.mod h1:xuSMhTy3ppHg91cH+D3f/4sI5CLyWNfSEkmmWh+0AeM=
+github.com/i9si-sistemas/nine v1.2.0 h1:K7LQoaAw6OTlM6/O1tq3fBx+kl0HM34i2palfxNdBMM=
+github.com/i9si-sistemas/nine v1.2.0/go.mod h1:soa3bsNbGEBawDdWSMKH5f8wShiqNlf85VPKVXB01Ws=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177 h1:HM47tTUUln6ThY0jAL5JMiTvIorY/VUZ8R4r4ytH+T0=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177/go.mod h1:+69cYySJrNKCmOVP9ozfFuyXt3ljzygkyRdnMS73wrk=
 golang.org/x/crypto v0.37.0 h1:kJNSjF/Xp7kU0iB2Z+9viTPMW4EqqsrywMXLJOOsXSE=
