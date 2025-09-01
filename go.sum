@@ -2,10 +2,16 @@ github.com/golang-jwt/jwt/v5 v5.2.2 h1:Rl4B7itRWVtYIHFrSNd7vhTiz9UpLdi6gZhZ3wEeD
 github.com/golang-jwt/jwt/v5 v5.2.2/go.mod h1:pqrtFR0X4osieyHYxtmOUWsAWrfe1Q5UVIyoH402zdk=
 github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c h1:8DlRk8oT2YFyo8MbY00ge2wEEGGLZWr2mGJextdSePI=
 github.com/i9si-sistemas/assert v0.0.0-20250430171352-359d1481c58c/go.mod h1:xRwY4u6NZZjNLlgdBSaNESQEUSJ4CxuT4lWQAbvwfBQ=
+github.com/i9si-sistemas/assert v1.0.1 h1:/uL+gqB5rB67zKSC4D1pSivv+KXtoyJWuzO4jXlZNdw=
+github.com/i9si-sistemas/assert v1.0.1/go.mod h1:2iaMov226y9f63Qbnrmd+6pU0ZKoyZ7jThZRKAYKT+I=
 github.com/i9si-sistemas/command v1.0.1 h1:Z8YkJloBaGy6/XQOcSGYFw89ZbbfmXIOAQSo5+KINYM=
 github.com/i9si-sistemas/command v1.0.1/go.mod h1:xuSMhTy3ppHg91cH+D3f/4sI5CLyWNfSEkmmWh+0AeM=
 github.com/i9si-sistemas/nine v1.2.0 h1:K7LQoaAw6OTlM6/O1tq3fBx+kl0HM34i2palfxNdBMM=
 github.com/i9si-sistemas/nine v1.2.0/go.mod h1:soa3bsNbGEBawDdWSMKH5f8wShiqNlf85VPKVXB01Ws=
+github.com/i9si-sistemas/nine v1.4.2 h1:YlBp4Iz6pw6JzsRXObkM44GnN5UhNi6OQbb/PHroghM=
+github.com/i9si-sistemas/nine v1.4.2/go.mod h1:tb9K3UzM05KEKyJ0tELPzXObmgo94QSwSwSQp1URRM4=
+github.com/i9si-sistemas/stringx v1.7.0 h1:aF36Wawm8D7tozx3Blj2rgIyBg28ENzMFnOzdO1iZZI=
+github.com/i9si-sistemas/stringx v1.7.0/go.mod h1:+GhyHUFCjPCdi4BOTLuXI1O0VE0YZP1kn32XEcb9bk4=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177 h1:HM47tTUUln6ThY0jAL5JMiTvIorY/VUZ8R4r4ytH+T0=
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177/go.mod h1:+69cYySJrNKCmOVP9ozfFuyXt3ljzygkyRdnMS73wrk=
 github.com/i9si-sistemas/wr v0.0.0-20250530141038-984f0fe0d503 h1:YVKpYNRY3FQiBIlXMqf06bbKqbg6mFoFQCwTWJvKeLE=
