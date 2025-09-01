@@ -1,6 +1,8 @@
 package main
 
 import (
+	"embed"
+	"io/fs"
 	"log"
 	"os"
 
@@ -11,10 +13,14 @@ import (
 	i9 "github.com/i9si-sistemas/nine/pkg/server"
 )
 
+//go:embed public/*
+var publicFiles embed.FS
+
 func main() {
 	logger := logger.New()
 	server := nine.NewServer(os.Getenv("PORT"))
-	server.ServeFiles("/", "./public")
+	fs, _ := fs.Sub(publicFiles, "public")
+	server.ServeFilesWithFS("/", fs)
 	server.Use(func(c *i9.Context) error {
 		logger.Request(c)
 		return nil
