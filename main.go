@@ -33,11 +33,15 @@ func main() {
 		return c.Send([]byte("Hello World!"))
 	})
 	session.Routes(server, logger)
-	go func(server interface {
-		Port() string
-	}) {
-		time.Sleep(1 * time.Millisecond)
-		browser.Open(fmt.Sprintf("http://localhost:%s", server.Port()))
-	}(server)
+	go openBrowser(server)
 	log.Fatal(server.Listen())
+}
+
+type Server interface {
+	Port() string
+}
+
+func openBrowser(server Server) {
+	time.Sleep(1 * time.Millisecond)
+	browser.Open(fmt.Sprintf("http://localhost:%s", server.Port()))
 }
