@@ -2,10 +2,13 @@ package main
 
 import (
 	"embed"
+	"fmt"
 	"io/fs"
 	"log"
 	"os"
+	"time"
 
+	"github.com/gabrielluizsf/work-time-alert/browser"
 	"github.com/gabrielluizsf/work-time-alert/server/logger"
 	"github.com/gabrielluizsf/work-time-alert/server/session"
 
@@ -18,7 +21,8 @@ var publicFiles embed.FS
 
 func main() {
 	logger := logger.New()
-	server := nine.NewServer(os.Getenv("PORT"))
+	port := os.Getenv("PORT")
+	server := nine.NewServer(port)
 	fs, _ := fs.Sub(publicFiles, "public")
 	server.ServeFilesWithFS("/", fs)
 	server.Use(func(c *i9.Context) error {
@@ -29,5 +33,11 @@ func main() {
 		return c.Send([]byte("Hello World!"))
 	})
 	session.Routes(server, logger)
+	go func(server interface {
+		Port() string
+	}) {
+		time.Sleep(1 * time.Millisecond)
+		browser.Open(fmt.Sprintf("http://localhost:%s", server.Port()))
+	}(server)
 	log.Fatal(server.Listen())
 }
