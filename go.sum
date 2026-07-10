@@ -12,5 +12,5 @@ github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177 h1:HM47tTUU
 github.com/i9si-sistemas/web-push v0.0.0-20250416112723-8516427e8177/go.mod h1:+69cYySJrNKCmOVP9ozfFuyXt3ljzygkyRdnMS73wrk=
 github.com/i9si-sistemas/wr v0.0.0-20250530141038-984f0fe0d503 h1:YVKpYNRY3FQiBIlXMqf06bbKqbg6mFoFQCwTWJvKeLE=
 github.com/i9si-sistemas/wr v0.0.0-20250530141038-984f0fe0d503/go.mod h1:Eal/hELAYP5oUqk1pbWFGtiYCNAri/6EpoNylnu6b4U=
-golang.org/x/crypto v0.45.0 h1:jMBrvKuj23MTlT0bQEOBcAE0mjg8mK9RXFhRH6nyF3Q=
-golang.org/x/crypto v0.45.0/go.mod h1:XTGrrkGJve7CYK7J8PEww4aY7gM3qMCElcJQ8n8JdX4=
+golang.org/x/crypto v0.52.0 h1:RMs7fP2rXdep0CftQlK8Uf+kibLm7qkCcradZWYz988=
+golang.org/x/crypto v0.52.0/go.mod h1:1QgfPxDqh0T2M/elOJtp9RvuR95kVjir0e6/BvEmGbc=
