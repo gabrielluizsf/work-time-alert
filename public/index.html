@@ -1,153 +1,164 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Work Time Alert</title>
-        <style id="dynamic-style">
-            .spinner {
-                width: 50px;
-                height: 50px;
-                border: 6px solid #ddd;
-                border-top: 6px solid #3498db;
-                border-radius: 50%;
-                animation: spin 1s linear infinite;
-                margin: auto;
-            }
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Work Time Alert</title>
+    <meta name="theme-color" content="#4F46E5">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="app">
+        <header class="app-header">
+            <div class="brand">
+                <div class="brand-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="13" r="8"/>
+                        <path d="M12 9v4l2.5 2.5"/>
+                        <path d="M9 2h6"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="brand-title">Work Time Alert</h1>
+                    <p class="brand-subtitle" data-i18n="tagline">Seu parceiro de foco no trabalho</p>
+                </div>
+            </div>
+            <div class="clock-chip" id="current-time" aria-label="current time"></div>
+        </header>
 
-            #loader {
-                height: 100vh;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-            }
+        <section class="card timer-card">
+            <div class="active-alert">
+                <span class="chip" data-i18n="activeLabel">Alerta ativo</span>
+                <h2 class="active-alert-name" id="page-title">Hora de trabalhar</h2>
+            </div>
 
-            @keyframes spin {
-                0% {
-                    transform: rotate(0deg);
-                }
-                100% {
-                    transform: rotate(360deg);
-                }
-            }
-        </style>
-    </head>
-    <body>
-        <div id="loader">
-            <div class="spinner"></div>
+            <div class="timer-wrap">
+                <svg class="progress-ring" width="280" height="280" viewBox="0 0 280 280"
+                    aria-hidden="true">
+                    <circle class="ring-track" cx="140" cy="140" r="124"/>
+                    <circle class="ring-value" id="ring-value" cx="140" cy="140" r="124"/>
+                </svg>
+                <div class="timer-display" id="timer-display" role="timer" aria-live="off">00:00:00</div>
+            </div>
+
+            <div class="controls">
+                <button id="start-btn" class="btn primary" data-i18n="start">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M8 5v14l11-7z"/>
+                    </svg>
+                    <span>Iniciar</span>
+                </button>
+                <button id="pause-btn" class="btn secondary" data-i18n="pause" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <rect x="6" y="4" width="4" height="16"/>
+                        <rect x="14" y="4" width="4" height="16"/>
+                    </svg>
+                    <span>Pausar</span>
+                </button>
+                <button id="reset-btn" class="btn danger" data-i18n="reset" disabled>
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M1 4v6h6"/>
+                        <path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/>
+                    </svg>
+                    <span>Resetar</span>
+                </button>
+            </div>
+        </section>
+
+        <section class="card alerts-section">
+            <div class="section-head">
+                <h2 class="section-title" data-i18n="alertsTitle">Meus Alertas</h2>
+                <span class="count-chip" id="alerts-count">2</span>
+            </div>
+
+            <form id="alert-form" class="alert-form" novalidate>
+                <div class="text-field">
+                    <input type="text" id="alert-name" placeholder=" " autocomplete="off">
+                    <label for="alert-name" data-i18n-label="nameLabel">Nome do alerta</label>
+                </div>
+
+                <div class="time-fields">
+                    <div class="text-field">
+                        <input type="number" id="alert-hours" min="0" max="23"
+                            placeholder=" " inputmode="numeric">
+                        <label for="alert-hours" data-i18n-label="hoursLabel">Horas</label>
+                    </div>
+                    <div class="text-field">
+                        <input type="number" id="alert-minutes" min="0" max="59"
+                            placeholder=" " inputmode="numeric">
+                        <label for="alert-minutes" data-i18n-label="minutesLabel">Min</label>
+                    </div>
+                    <div class="text-field">
+                        <input type="number" id="alert-seconds" min="0" max="59"
+                            placeholder=" " inputmode="numeric">
+                        <label for="alert-seconds" data-i18n-label="secondsLabel">Seg</label>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" id="cancel-form-btn" class="btn text" data-i18n="cancel"><span id="cancel-form-label">Limpar</span></button>
+                    <button type="submit" id="add-alert-btn" class="btn primary" data-i18n="addAlert">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 5v14"/>
+                            <path d="M5 12h14"/>
+                        </svg>
+                        <span id="add-alert-label">Adicionar</span>
+                    </button>
+                </div>
+            </form>
+
+            <ul id="alerts-list" class="alerts-list"></ul>
+
+            <div id="empty-state" class="empty-state" hidden>
+                <div class="empty-icon" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 8v4l2.5 2.5"/>
+                    </svg>
+                </div>
+                <p class="empty-title" data-i18n="emptyTitle">Nenhum alerta ainda</p>
+                <p class="empty-desc" data-i18n="emptyDesc">Crie seu primeiro alerta no formulário acima.</p>
+            </div>
+        </section>
+
+        <footer class="app-footer" data-i18n="hint">Dica: aperte Espaço para iniciar ou pausar o contador</footer>
+    </main>
+
+    <div id="snackbar" class="snackbar" role="status" aria-live="polite"></div>
+
+    <div id="done-dialog" class="dialog-overlay" role="dialog" aria-modal="true" aria-labelledby="dialog-title">
+        <div class="dialog">
+            <div class="dialog-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                    <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                </svg>
+            </div>
+            <h3 id="dialog-title">Tempo Esgotado!</h3>
+            <p id="dialog-message">O tempo do seu alerta finalizou!</p>
+            <div class="dialog-actions">
+                <button id="dialog-snooze" class="btn text" data-i18n="snooze">Adiar 5 min</button>
+                <button id="dialog-ok" class="btn primary" data-i18n="ok">OK</button>
+            </div>
         </div>
+    </div>
 
-        <div class="container" id="pt-br-content" style="display: none">
-            <h1>Alerta de Hora de Trabalhar</h1>
+    <noscript>
+        <p style="text-align:center;padding:2rem">Habilite o JavaScript para usar o Work Time Alert.</p>
+    </noscript>
 
-            <div class="input-group">
-                <label for="work-time">Defina o horário para trabalhar:</label>
-                <input type="time" id="work-time" required>
-            </div>
-
-            <button id="start-btn">Iniciar Contador</button>
-            <button id="stop-btn" disabled>Parar Contador</button>
-
-            <div class="timer-display" id="timer">
-                Defina um horário e clique em "Iniciar Contador"
-            </div>
-
-            <div class="alert" id="alert">
-                HORA DE TRABALHAR!
-            </div>
-
-            <div class="current-time" id="current-time"></div>
-        </div>
-
-        <div class="container" id="en-us-content" style="display: none">
-            <h1>Work Time Alert</h1>
-
-            <div class="input-group">
-                <label for="work-time-en">Set your work time:</label>
-                <input type="time" id="work-time-en" required>
-            </div>
-
-            <button id="start-btn-en">Start Timer</button>
-            <button id="stop-btn-en" disabled>Stop Timer</button>
-
-            <div class="timer-display" id="timer-en">
-                Set a time and click "Start Timer"
-            </div>
-
-            <div class="alert" id="alert-en">
-                TIME TO WORK!
-            </div>
-
-            <div class="current-time" id="current-time-en"></div>
-        </div>
-
-        <script>
-            async function getFileContent(url) {
-                const response = await fetch(url);
-                if (!response.ok) {
-                    throw new Error(`Failed to load: ${url}`);
-                }
-                return await response.text();
-            }
-
-            async function loadScript(url) {
-                const scriptText = await getFileContent(url);
-                const script = document.createElement("script");
-                script.textContent = scriptText;
-                document.body.appendChild(script);
-            }
-
-            async function loadCSS(url) {
-                const cssText = await getFileContent(url);
-                document.getElementById("dynamic-style")
-                    .textContent = cssText;
-            }
-
-            async function loadPage() {
-                try {
-                    await Promise.all([
-                        loadCSS("/css/style.css"),
-                        loadScript("/js/languageDetector.js"),
-                        loadScript("/js/setupTimer.js"),
-                        loadScript("/js/session.js"),
-                    ]);
-
-                    let sessionId = null;
-                    if (!sessionId) {
-                        const sessions = []
-                        await initSession(sessions);
-                        sessionId = sessions[0];
-                    }
-                    registerServiceWorker(sessionId);
-                    const language = detectLanguage?.() || "pt";
-
-                    document.getElementById("pt-br-content")
-                        .style.display = language === "pt"
-                            ? "block"
-                            : "none";
-                    document.getElementById("en-us-content")
-                        .style.display = language === "pt"
-                            ? "none"
-                            : "block";
-
-                    setupTimer("pt", sessionId);
-                    setupTimer("en", sessionId);
-                } catch (e) {
-                    console.error("Erro:", e);
-                    document.getElementById("pt-br-content")
-                        .style.display = "block";
-                    document.getElementById("en-us-content")
-                        .style.display = "none";
-                } finally {
-                    document.getElementById("loader").style
-                        .display = "none";
-                }
-            }
-
-            document.addEventListener(
-                "DOMContentLoaded",
-                loadPage,
-            );
-        </script>
-    </body>
+    <script src="js/languageDetector.js"></script>
+    <script src="js/session.js"></script>
+    <script src="js/app.js"></script>
+</body>
 </html>
