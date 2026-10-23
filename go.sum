@@ -1,3 +1,7 @@
+github.com/gabrielluizsf/antui v0.0.3 h1:89l5Sgl3kLCLQpQvYMM0uZ0QACmu8+XImr7jBD0nUOY=
+github.com/gabrielluizsf/antui v0.0.3/go.mod h1:RRDJ2u3rMK40xzDR7NoC4J0v/Oko7oa/TsHbExRwlzs=
+github.com/gabrielluizsf/file-encryptor v1.0.4 h1:IxjNfkwYIIalgk7wXD1edWK9bfPRSVaZEuDRGRNuWbs=
+github.com/gabrielluizsf/file-encryptor v1.0.4/go.mod h1:0rPSsfW5CodWQpnT8C89jxEbhJwwAJs4Rki7oDCholY=
 github.com/golang-jwt/jwt/v5 v5.2.2 h1:Rl4B7itRWVtYIHFrSNd7vhTiz9UpLdi6gZhZ3wEeDy8=
 github.com/golang-jwt/jwt/v5 v5.2.2/go.mod h1:pqrtFR0X4osieyHYxtmOUWsAWrfe1Q5UVIyoH402zdk=
 github.com/i9si-sistemas/assert v1.0.1 h1:/uL+gqB5rB67zKSC4D1pSivv+KXtoyJWuzO4jXlZNdw=
