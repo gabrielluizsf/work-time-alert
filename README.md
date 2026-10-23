@@ -6,7 +6,7 @@
 
 ## Requirements
 
-- Golang 1.24.1 or higher  
+- Golang 1.27.1 or higher  
    - [Download](https://go.dev/dl/)
 
 ## Build and Run
@@ -16,10 +16,20 @@ go build
 ```
 
 - Linux/Mac
-    ```bash	
-    ./work-time-alert
-    ```
+    - Desktop
+        ```bash	
+        ./work-time-alert
+        ```
+    - Web
+        ```bash	
+        ./work-time-alert --web
+        ```
 - Windows
-    ```bash
-    ./work-time-alert.exe
-    ```
+    - Desktop
+        ```bash	
+        ./work-time-alert.exe
+        ```
+    - Web
+        ```bash	
+        ./work-time-alert.exe --web
+        ```
