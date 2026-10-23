@@ -43,7 +43,7 @@ func Run(icon []byte) {
 		Now:   time.Now,
 		OnDone: func(title, message string) {
 			chime.Play()
-			go Notify(title, message)
+			win.SendNotification(title, message)
 		},
 	})
 

@@ -3,7 +3,7 @@ module github.com/gabrielluizsf/work-time-alert
 go 1.27.1
 
 require (
-	github.com/gabrielluizsf/antui v0.0.3
+	github.com/gabrielluizsf/antui v0.0.4
 	github.com/gabrielluizsf/file-encryptor v1.0.4
 	github.com/i9si-sistemas/assert v1.0.1
 	github.com/i9si-sistemas/command v1.0.1
